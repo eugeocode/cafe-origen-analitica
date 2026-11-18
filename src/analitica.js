@@ -1,11 +1,33 @@
-const Datos= require("./datos");
-const objDatos= new Datos();
+function valorVenta(ventas){
+    return ventas.cantidad * ventas.precio;
+}
 
-const ventas = objDatos.ventas;
+function totalVentas(ventas){
+    let total = 0;
+    for (let i = 0; i < ventas.length-1; i++) {
+        total += valorVenta(ventas[i]);
+    }
+    return total;
+}
 
-console.log("Registros:", ventas.length);
-console.log("Primero:", ventas[0]);
-console.log("Ultimo:", ventas[ventas.length-1]);
-console.log("Producto en la posicion 4:", ventas[4].producto);
-console.table(ventas)
+function VentaMayor(ventas){
+    let mayor = ventas[0];
+    for (let i = 1; i < ventas.length; i++) {
+        if (valorVenta(ventas[i]) > valorVenta(mayor)) {
+            mayor = ventas[i];
+        }
+    }
+    return mayor;
+}
 
+function UnidadesVendidas(ventas){
+    let totalUnidades = 0;
+    for (let i = 0; i < ventas.length; i++) {
+        totalUnidades += ventas[i].cantidad;
+    }
+    return totalUnidades;
+}
+
+function ticketPromedio(ventas){
+    
+}
