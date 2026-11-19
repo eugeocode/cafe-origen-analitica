@@ -1,5 +1,5 @@
 const Datos= require("./datos");
-const { totalVentas, ventaMayor, unidadesVendidas, ticketPromedio, ventasCiudad, bubblesort } = require("./analitica");
+const { totalVentas, ventaMayor, unidadesVendidas, ticketPromedio, ventasCiudad, bubblesort,unidadesVendidasM,totalVendidoM } = require("./analitica");
 const objDatos= new Datos();
 
 const ventas = objDatos.ventas;
@@ -17,7 +17,8 @@ console.log("Ticket promedio:", ticketPromedio(ventas));
 console.log("Ventas en Medellín:", ventasCiudad(ventas, "MedeLlin"));
 console.log("Total ventas en Cali:", ventasCiudad(ventas, "CAli"));
 console.log("Total ventas en Bogotá:", ventasCiudad(ventas, "BoGota"));
-
+console.log("top 3 productos mas vendidos", totalVendidoM(ventas));
+console.log("unidades vendidos", unidadesVendidas(ventas));
 const array_num=[]
 
 array_num.push(3,2,7,1,8,2,34,5,6,32,34,12,565,2354,0);

@@ -56,11 +56,45 @@ function bubblesort(array){
     for (let i = 0; i < copia.length - 1; i++) {
         for (let j = 0; j < copia.length - 1 - i; j++) {
             if (copia[j] > copia[j + 1]) {
-                [copia[j], copia[j + 1]] = [copia[j + 1], copia[j]];
+                [copia[j], copia[j + 1]] = [copia[j + 1], copia[j]]
             }
         }
     }
     return copia;
+}
+
+function grupoProducto(ventas){
+    const resumen= {};
+
+    for(let i=0; i<ventas.length; i++){
+        const venta=ventas[i]
+        const nombre= venta.producto
+
+        if(!resumen[nombre]){
+            resumen[nombre]={
+                producto: nombre,
+                unidades: 0,
+                ingresos: 0
+            }
+        }
+        resumen[nombre].unidades+=venta.cantidad
+        resumen[nombre].precio+=valorVenta(venta)
+    }
+    return Object.values(resumen)
+}
+
+function unidadesVendidasM(ventas){
+    const productos=grupoProducto(ventas)
+    return productos
+    .sort((a, b) => b.unidades - a.unidades)
+    .slice(0, 3)
+}
+
+function totalVendidoM(ventas){
+    const productos=grupoProducto(ventas)
+    return productos
+    .sort((a, b) => b.ingresos - a.ingresos)
+    .slice(0, 3)
 }
 
 module.exports = {
@@ -70,5 +104,7 @@ module.exports = {
     unidadesVendidas,
     ticketPromedio,
     ventasCiudad,
-    bubblesort
+    bubblesort,
+    unidadesVendidasM,
+    totalVendidoM
 };
